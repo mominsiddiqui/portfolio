@@ -1,0 +1,207 @@
+@property --angle-1 {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: -75deg;
+}
+
+@property --angle-2 {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: -45deg;
+}
+
+:root {
+  --anim--hover-time: 400ms;
+  --anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.header-content {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.5rem;
+    color: rgb(148, 148, 148);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.nav-column {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-text {
+    padding: 0.5em 1em;
+}
+
+.header-content a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Glass Button Styles */
+.button-wrap {
+    position: relative;
+    z-index: 2;
+    border-radius: 999vw;
+    background: transparent;
+    pointer-events: none;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.button-shadow {
+    --shadow-cuttoff-fix: 2em;
+    position: absolute;
+    width: calc(100% + var(--shadow-cuttoff-fix));
+    height: calc(100% + var(--shadow-cuttoff-fix));
+    top: calc(0% - var(--shadow-cuttoff-fix) / 2);
+    left: calc(0% - var(--shadow-cuttoff-fix) / 2);
+    filter: blur(clamp(2px, 0.125em, 12px));
+    pointer-events: none;
+}
+
+.button-shadow::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    border-radius: 999vw;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+    width: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
+    height: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
+    top: calc(var(--shadow-cuttoff-fix) - 0.5em);
+    left: calc(var(--shadow-cuttoff-fix) - 0.875em);
+    padding: 0.125em;
+    box-sizing: border-box;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+    opacity: 1;
+}
+
+.button-wrap button {
+    all: unset;
+    cursor: pointer;
+    position: relative;
+    pointer-events: auto;
+    z-index: 3;
+    background: linear-gradient(
+        -75deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.05)
+    );
+    border-radius: 999vw;
+    box-shadow: inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+        inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
+        0 0.25em 0.125em -0.125em rgba(0, 0, 0, 0.2),
+        0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    width: 100%;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.button-wrap button::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    border-radius: 999vw;
+    padding: var(--border-width);
+    background: conic-gradient(
+        from var(--angle-1) at 50% 50%,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0) 5% 40%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0) 60% 95%,
+        rgba(0, 0, 0, 0.5)
+    );
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease),
+        --angle-1 500ms ease;
+    transform: translateZ(0);
+    will-change: transform, opacity;
+}
+
+.button-wrap button:hover {
+    transform: scale(0.975);
+}
+
+.button-wrap button:hover::after {
+    --angle-1: -125deg;
+}
+
+.button-wrap button span {
+    display: block;
+    padding: 0.5em 1em;
+    color: rgba(50, 50, 50, 1);
+    font-weight: 500;
+    position: relative;
+}
+
+.button-wrap button span::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+        var(--angle-2),
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.5) 40% 50%,
+        rgba(255, 255, 255, 0) 55%
+    );
+    mix-blend-mode: screen;
+    pointer-events: none;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+    transform: translateZ(0);
+    will-change: transform, opacity;
+}
+
+.separator {
+    color: #e1e1e1;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .header-content a {
+        font-size: 1.2rem;
+    }
+    .nav-container {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content a {
+        font-size: 1rem;
+    }
+    .nav-container {
+        gap: 0.5rem;
+    }
+}
+

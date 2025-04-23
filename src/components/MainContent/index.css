@@ -1,0 +1,314 @@
+.intro-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10em;
+    font-family: Arial, sans-serif;
+    max-height: 60vh;
+}
+
+.main-heading {
+    font-size: 4em;    
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 1.5rem;
+}
+
+.sub-heading {
+    font-size: 3rem;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 1.5rem;
+}
+
+.gt-logo {
+    height: 40px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+/* Responsive font sizes */
+@media (max-width: 1200px) {
+    .main-heading {
+        font-size: 2.5em;
+    }
+    .sub-heading {
+        font-size: 2rem;
+    }
+    .intro-container {
+        padding: 10em 5em;
+    }
+    .gt-logo {
+        height: 20px;
+    }
+
+}
+
+@media (max-width: 992px) {
+    .main-heading {
+        font-size: 2em;
+    }
+    .sub-heading {
+        font-size: 1.75rem;
+    }
+    .intro-container {
+        padding: 8em 5em;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-heading {
+        font-size: 1.75em;
+    }
+    .sub-heading {
+        font-size: 1.5rem;
+    }
+    .intro-container {
+        padding: 2em;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-heading {
+        font-size: 2.5em;
+    }
+    .sub-heading {
+        font-size: 2em;
+    }
+    .intro-container {
+        margin-top: 3em;
+        padding: 2em 1em 1em 1em;
+    }
+}
+
+@media (max-width: 400px) {
+    .main-heading {
+        font-size: 2em;
+    }
+    .sub-heading {
+        font-size: 1.5em;
+    }
+    .intro-container {
+        padding: 2em 1em 1em 1em;
+    }
+}
+
+
+.highlight {
+    color: #7AB65D; /* Green color for the name */
+    font-weight: bold;
+}
+
+.underline {
+    position: relative;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 6px;
+    width: 100%;
+    background: #7AB65D;
+    border-radius: 2px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Make underline vanish on hover for non-mobile screens */
+@media (min-width: 577px) {
+    .underline::after {
+        animation: bounce 0.5s infinite alternate;
+    }
+    
+    @keyframes bounce {
+        0% {
+            bottom: 0;
+        }
+        100% {
+            bottom: 3px;
+        }
+    }
+    .underline:hover::after {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+.advisor-section {
+    margin-top: 4rem;
+    color: #aaa;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5rem;
+}
+
+.tooltip-box {
+  position: fixed;
+  transform: translate(-50%, 20%);
+  margin-top: -10px;
+  width: 500px;
+  font-size: 0.6em;
+}
+
+@media (min-width: 1400px) {
+  .tooltip-box {
+    font-size: 1em;
+    width: 700px;
+  }
+}
+
+.tooltip-text {
+  width: 70%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+
+.tooltip-wrap {
+    position: relative;
+    z-index: 2;
+    border-radius: 10px;
+    background: transparent;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+    width: fit-content;
+    margin: 0 auto;
+    cursor: pointer; /* Add cursor pointer to the wrapper */
+    pointer-events: auto; /* Enable pointer events */
+}
+
+.tooltip-shadow {
+    --shadow-cuttoff-fix: 2em;
+    position: absolute;
+    width: calc(100% + var(--shadow-cuttoff-fix));
+    height: calc(100% + var(--shadow-cuttoff-fix));
+    top: calc(0% - var(--shadow-cuttoff-fix) / 2);
+    left: calc(0% - var(--shadow-cuttoff-fix) / 2);
+    filter: blur(clamp(2px, 0.125em, 12px));
+    pointer-events: none;
+}
+
+.tooltip-shadow::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+    width: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
+    height: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
+    top: calc(var(--shadow-cuttoff-fix) - 0.5em);
+    left: calc(var(--shadow-cuttoff-fix) - 0.875em);
+    padding: 0.125em;
+    box-sizing: border-box;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+    opacity: 1;
+}
+
+/* Create a new inner div that will replace the button */
+.tooltip-wrap .tooltip-inner {
+    position: relative;
+    z-index: 3;
+    background: linear-gradient(
+        -75deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.05)
+    );
+    border-radius: 10px;
+    box-shadow: inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+        inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
+        0 0.25em 0.125em -0.125em rgba(0, 0, 0, 0.2),
+        0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    width: 100%;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+}
+
+.tooltip-wrap .tooltip-inner::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    border-radius: 10px;
+    padding: var(--border-width);
+    background: conic-gradient(
+        from var(--angle-1) at 50% 50%,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0) 5% 40%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0) 60% 95%,
+        rgba(0, 0, 0, 0.5)
+    );
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease),
+        --angle-1 500ms ease;
+}
+
+.tooltip-wrap:hover .tooltip-inner {
+    transform: scale(0.975);
+}
+
+.tooltip-wrap:hover .tooltip-inner::after {
+    --angle-1: -125deg;
+}
+
+.tooltip-wrap .tooltip-inner span {
+    display: block;
+    padding: 0.3em 0.5em;
+    color: rgba(50, 50, 50, 1);
+    font-weight: 500;
+    position: relative;
+}
+
+.tooltip-wrap .tooltip-inner span::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+        var(--angle-2),
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.5) 40% 50%,
+        rgba(255, 255, 255, 0) 55%
+    );
+    mix-blend-mode: screen;
+    pointer-events: none;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+}
+
+.tooltip-inner {
+    display: flex;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .tooltip-image-column {
+    width: 200px;
+    flex-shrink: 0;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .tooltip-image-column img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .tooltip-text-column {
+    flex-grow: 1;
+    overflow: hidden;    
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+  }

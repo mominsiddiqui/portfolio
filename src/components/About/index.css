@@ -1,0 +1,103 @@
+.about-container {
+  padding: 2em 4em;
+  font-size: 2rem;
+  line-height: 1.6;
+}
+
+.main-text {
+  /* font-size: 1.2rem; */
+  margin-bottom: 60px;
+  font-family: "Open Sans", sans-serif;
+}
+
+.main-text p {
+  margin-bottom: 30px;
+}
+
+.highlights {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.highlight-section {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 10px;
+}
+
+.highlight-header {
+  background-color: #7AB65D;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.highlight-content {
+  font-size: 1rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .highlights {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .highlight-section {
+    width: 80%;  /* Increased width for medium screens */
+  }
+  
+  .about-container {
+    padding: 20px;
+    font-size: 1.5rem;
+  }
+  
+  .highlight-content {
+    font-size: 0.9rem;
+  }
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  .about-container {
+    font-size: 1.2rem;
+  }
+  
+  .highlight-section {
+    width: 100%;  /* Full width for small screens */
+  }
+  
+  .highlight-header {
+    font-size: 0.9rem;
+  }
+  
+  .highlight-content {
+    font-size: 0.8rem;
+  }
+}
+
+.professor-name {
+  background-color: #7bb65d57;
+  color: rgb(38, 38, 38);
+  padding: 2px 4px;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.professor-name:hover {
+  background-color: #7bb65d;
+  color: rgb(255, 255, 255);
+}
+
+@media screen and (min-width: 1200px) {
+  .about-container {
+    padding: 2em 8em;
+  }
+} 

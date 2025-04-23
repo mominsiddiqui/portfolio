@@ -1,0 +1,65 @@
+.layout {
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  padding: 20px 100px;
+  background-image: url('../../public/background.svg'); /* Updated to use SVG background image */
+  background-size: cover; /* Makes the image cover the entire container */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-attachment: fixed; /* Makes the background fixed when scrolling */
+  min-height: 100vh; /* Ensures the layout takes at least the full viewport height */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.row {
+  display: flex;
+  margin: 0 -10px;
+}
+
+.column {
+  padding: 0 10px;
+}
+
+/* Desktop Layout */
+@media (min-width: 768px) {
+  .column:first-child {
+    flex: 1;
+  }
+  
+  .column:last-child {
+    flex: 4;
+  }  
+}
+
+/* Mobile Layout */
+@media (max-width: 767px) {
+  .row {
+    flex-direction: column;
+  }
+  
+  .column {
+    width: 100%;
+  }
+  
+  /* Reorder blocks for mobile view */
+  .column:last-child {
+    order: 1;
+  }
+  
+  .column:first-child {
+    order: 0;
+  }
+
+  .column {
+    padding: 0px 0px;
+  }
+}
+
+/* Medium screens */
+@media (max-width: 1399px) {
+  .layout {
+    padding: 20px 20px; /* Reduced horizontal padding for screens below 1400px */
+  }
+} 

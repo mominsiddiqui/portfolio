@@ -1,0 +1,185 @@
+.socialIcons {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.socialLink {
+  display: flex;
+  
+  height: 30px;
+  /* height: 100%; */
+}
+
+.socialIcon {
+  /* width: 30px; */
+  /* height: 30px; */
+}
+
+.cvButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cvButton {
+  background-color: #7AB65D;
+  border-radius: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+}
+
+.cvLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  width: 100%;
+  justify-content: center;
+}
+
+.cvText {
+  min-width: 50px;
+  text-align: center;
+}
+
+.cv-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+  color: inherit;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1em;
+}
+
+.icon-wrap {
+    position: relative;
+    z-index: 2;
+    border-radius: 10px;
+    background: transparent;
+    pointer-events: none;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.icon-shadow {
+    --shadow-cuttoff-fix: 2em;
+    position: absolute;
+    width: calc(100% + var(--shadow-cuttoff-fix));
+    height: calc(100% + var(--shadow-cuttoff-fix));
+    top: calc(0% - var(--shadow-cuttoff-fix) / 2);
+    left: calc(0% - var(--shadow-cuttoff-fix) / 2);
+    filter: blur(clamp(2px, 0.125em, 12px));
+    pointer-events: none;
+}
+
+.icon-shadow::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+    width: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
+    height: calc(100% - var(--shadow-cuttoff-fix) - 0.25em);
+    top: calc(var(--shadow-cuttoff-fix) - 0.5em);
+    left: calc(var(--shadow-cuttoff-fix) - 0.875em);
+    padding: 0.125em;
+    box-sizing: border-box;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+    opacity: 1;
+}
+
+.icon-wrap button {
+    all: unset;
+    cursor: pointer;
+    position: relative;
+    pointer-events: auto;
+    z-index: 3;
+    background: linear-gradient(
+        -75deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.05)
+    );
+    border-radius: 10px;
+    box-shadow: inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
+        inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
+        0 0.25em 0.125em -0.125em rgba(0, 0, 0, 0.2),
+        0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    width: 100%;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+}
+
+.icon-wrap button::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    border-radius: 10px;
+    padding: var(--border-width);
+    background: conic-gradient(
+        from var(--angle-1) at 50% 50%,
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0) 5% 40%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0, 0) 60% 95%,
+        rgba(0, 0, 0, 0.5)
+    );
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease),
+        --angle-1 500ms ease;
+}
+
+.icon-wrap button:hover {
+    transform: scale(0.975);
+}
+
+.icon-wrap button:hover::after {
+    --angle-1: -125deg;
+}
+
+.icon-wrap button span {
+    display: block;
+    padding: 0.3em 0.5em;
+    color: rgba(50, 50, 50, 1);
+    font-weight: 500;
+    position: relative;
+}
+
+.icon-wrap button span::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+        var(--angle-2),
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.5) 40% 50%,
+        rgba(255, 255, 255, 0) 55%
+    );
+    mix-blend-mode: screen;
+    pointer-events: none;
+    transition: all var(--anim--hover-time) var(--anim--hover-ease);
+}
